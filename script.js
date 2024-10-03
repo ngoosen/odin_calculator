@@ -70,12 +70,21 @@ function operate(e) {
         break;
     }
 
-    displayValue = "0";
     input.textContent = total;
+    displayValue = "0";
     numbers = [];
+    operator = "";
   } else {
     operator = e.target.textContent;
   }
+}
+
+function clear() {
+  displayValue = "0";
+  numbers = [];
+  operator = "";
+  total = 0;
+  input.textContent = displayValue;
 }
 
 updateYear();
@@ -85,3 +94,6 @@ numberButtons.forEach(button => button.addEventListener("click", enterNumber));
 
 const operatorButtons = [...document.querySelectorAll(".operators button")];
 operatorButtons.forEach(button => button.addEventListener("click", operate));
+
+const clearButton = document.querySelector(".commands button");
+clearButton.addEventListener("click", clear);
