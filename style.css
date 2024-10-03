@@ -10,4 +10,143 @@ html {
   font-size: 16px;
 
   box-sizing: inherit;
+
+  --primary-color: #aa0a65;
+  --secondary-color: #d68eb7;
+  --tertiary-color: #dd59a4;
+}
+
+header {
+  padding: 20px 0;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+button {
+  appearance: none;
+  border: none;
+
+  width: 60px;
+  height: 60px;
+
+  margin: 5px;
+
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 22px;
+
+  border-radius: 50px;
+
+  transition: all .05s;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #FFFFFF !important;
+  color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100vw;
+
+  padding: 10px 0;
+
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+
+footer a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.calculator {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 315px;
+
+  padding: 15px;
+
+  border-radius: 10px;
+  background-color: #180510;
+}
+
+.input {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 100%;
+  height: 70px;
+
+  margin: 5px;
+  padding: 10px;
+
+  border-radius: 5px;
+  background-color: #ffe9f5;
+
+  overflow: hidden;
+}
+
+.input span {
+  color: var(--primary-color);
+  font-family: "Orbitron", sans-serif;
+  font-size: 60px;
+}
+
+.commands {
+  width: 100%;
+}
+
+.commands button {
+  background-color: var(--tertiary-color);
+  font-size: 16px;
+}
+
+.numbers button {
+  background-color: var(--secondary-color);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.row:last-child button {
+  width: 100%;
+}
+
+.operators {
+  margin-top: -70px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.operators button {
+  background-color: var(--primary-color);
 }
