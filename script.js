@@ -33,10 +33,6 @@ function multiply(n1, n2) {
 }
 
 function divide(n1, n2) {
-  if (n2 == 0) {
-    return "Error!";
-  }
-
   return n1 / n2;
 }
 
@@ -93,9 +89,14 @@ function operate(e) {
     number2 = "";
   } else {
     if (number1 !== "" && number2 !== "") {
+      if (operator === "/" && number2 == 0) {
+        clear();
+        input.textContent = "Error!";
+        return;
+      }
+
       total = resolve(number1, number2);
-      displayValue = total;
-      input.textContent = displayValue;
+      input.textContent = total;
       displayValue = "";
       number1 = total;
       number2 = "";
