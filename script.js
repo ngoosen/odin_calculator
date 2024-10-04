@@ -70,19 +70,25 @@ function operate(e) {
   const selectedOperator = e.target.textContent;
 
   if (number1 === "") {
-    number1 = parseInt(displayValue);
+    number1 = displayValue;
   } else if (number2 === "") {
-    number2 = parseInt(displayValue);
+    number2 = displayValue;
   }
 
   displayValue = "";
 
   if (selectedOperator === "=") {
+    if (number2 == 0 && operator === "/") {
+      clear();
+      input.textContent = "Error!";
+      return;
+    }
+
     if (number1 === "" || number2 === "") {
       return;
     }
 
-    total = resolve(number1, number2);
+    total = resolve(parseInt(number1), parseInt(number2));
     displayValue = total;
     input.textContent = displayValue;
     number1 = "";
@@ -95,7 +101,7 @@ function operate(e) {
         return;
       }
 
-      total = resolve(number1, number2);
+      total = resolve(parseInt(number1), parseInt(number2));
       input.textContent = total;
       displayValue = "";
       number1 = total;
