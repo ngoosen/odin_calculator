@@ -5,6 +5,7 @@ let number1 = "";
 let number2 = "";
 let operator = "";
 let total = 0;
+let decimalEntered = false;
 
 function updateYear() {
   const footer = document.querySelector("footer span");
@@ -57,10 +58,20 @@ function resolve(n1, n2) {
 }
 
 function enterNumber(e) {
+  const enteredValue = e.target.textContent;
+
+  if (enteredValue === ".") {
+    if (decimalEntered) {
+      return;
+    } else {
+      decimalEntered = true;
+    }
+  }
+
   if (displayValue == 0 || displayValue === "" || operator === "=") {
-    displayValue = e.target.textContent;
+    displayValue = enteredValue;
   } else {
-    displayValue += e.target.textContent;
+    displayValue += enteredValue;
   }
 
   input.textContent = displayValue;
@@ -68,6 +79,7 @@ function enterNumber(e) {
 
 function operate(e) {
   const selectedOperator = e.target.textContent;
+  decimalEntered = false;
 
   if (number1 === "") {
     number1 = displayValue;
@@ -88,7 +100,7 @@ function operate(e) {
       return;
     }
 
-    total = resolve(parseInt(number1), parseInt(number2));
+    total = resolve(parseFloat(number1), parseFloat(number2));
     displayValue = total;
     input.textContent = displayValue;
     number1 = "";
@@ -101,7 +113,7 @@ function operate(e) {
         return;
       }
 
-      total = resolve(parseInt(number1), parseInt(number2));
+      total = resolve(parseFloat(number1), parseFloat(number2));
       input.textContent = total;
       displayValue = "";
       number1 = total;
