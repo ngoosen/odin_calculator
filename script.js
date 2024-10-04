@@ -13,11 +13,12 @@ function updateYear() {
 }
 
 function clear() {
+  displayValue = "0";
   number1 = "";
   number2 = "";
   operator = "";
   total = 0;
-  displayValue = "0";
+  decimalEntered = false;
   input.textContent = displayValue;
 }
 
@@ -61,14 +62,20 @@ function enterNumber(e) {
   const enteredValue = e.target.textContent;
 
   if (enteredValue === ".") {
-    if (decimalEntered) {
-      return;
-    } else {
+    if (!decimalEntered) {
+      if (displayValue === "") {
+        displayValue = "0";
+      }
+
+      displayValue += enteredValue;
       decimalEntered = true;
+      input.textContent = displayValue;
     }
+
+    return;
   }
 
-  if (displayValue == 0 || displayValue === "" || operator === "=") {
+  if (!decimalEntered && (displayValue == 0 || displayValue === "" || operator === "=")) {
     displayValue = enteredValue;
   } else {
     displayValue += enteredValue;
