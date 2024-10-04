@@ -24,15 +24,14 @@ function multiply(n1, n2) {
 
 function divide(n1, n2) {
   if (n2 == 0) {
-    // throw error
-    return;
+    return "Error!";
   }
 
   return n1 / n2;
 }
 
 function enterNumber(e) {
-  if (displayValue == 0) {
+  if (displayValue == 0 || displayValue === "") {
     displayValue = e.target.textContent;
   } else {
     displayValue += e.target.textContent;
@@ -43,7 +42,7 @@ function enterNumber(e) {
 
 function operate(e) {
   numbers.push(parseInt(displayValue));
-  displayValue = "0";
+  displayValue = "";
 
   if (e.target.textContent === "=") {
     let n1 = numbers[0];
@@ -71,7 +70,6 @@ function operate(e) {
     }
 
     input.textContent = total;
-    displayValue = "0";
     numbers = [];
     operator = "";
   } else {
@@ -80,7 +78,7 @@ function operate(e) {
 }
 
 function clear() {
-  displayValue = "0";
+  displayValue = "";
   numbers = [];
   operator = "";
   total = 0;
