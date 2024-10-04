@@ -14,6 +14,8 @@ html {
   --primary-color: #aa0a65;
   --secondary-color: #d68eb7;
   --tertiary-color: #dd59a4;
+
+  --calculator-background-color: #dbb9cc;
 }
 
 header {
@@ -22,13 +24,16 @@ header {
 
 header h1 {
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
+  color: var(--primary-color);
 }
 
 main {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 80vh;
 
   padding: 20px;
 }
@@ -68,11 +73,14 @@ footer {
   padding: 10px 0;
 
   text-align: center;
+
+  color: #FFFFFF;
+  background-color: var(--calculator-background-color);
 }
 
 footer a {
   text-decoration: none;
-  color: #000000;
+  color: #FFFFFF;
   font-weight: bold;
 }
 
@@ -88,11 +96,12 @@ footer a:hover {
   justify-content: space-between;
 
   width: 315px;
+  flex-shrink: 0;
 
   padding: 15px;
 
   border-radius: 10px;
-  background-color: #180510;
+  background-color: var(--calculator-background-color);
 }
 
 .input {
