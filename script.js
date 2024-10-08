@@ -23,6 +23,8 @@ function clear() {
 }
 
 function updateDisplay() {
+  displayValue = displayValue.toString();
+
   if (displayValue.includes(".")) {
     displayValue = displayValue.toString().substring(0, 15);
   } else if (displayValue.length > 15) {
