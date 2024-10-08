@@ -128,12 +128,28 @@ footer a:hover {
 }
 
 .commands {
-  width: 100%;
+  display: flex;
+  align-items: center;
+
+  width: 72%;
 }
 
 .commands button {
   background-color: var(--tertiary-color);
   font-size: 16px;
+}
+
+.commands i {
+  color: var(--tertiary-color);
+  font-size: 50px;
+  margin-left: auto;
+  transition: all .05s;
+}
+
+.commands i:hover {
+  cursor: pointer;
+  color: #FFFFFF;
+  transform: scale(1.15);
 }
 
 .numbers button {

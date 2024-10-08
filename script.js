@@ -162,6 +162,16 @@ function operate(e) {
   operator = selectedOperator;
 }
 
+function backspace() {
+  if (displayValue.length <= 1) {
+    displayValue = "0";
+  } else {
+    displayValue = displayValue.substring(0, displayValue.length - 1);
+  }
+
+  updateDisplay();
+}
+
 updateYear();
 
 const numberButtons = [...document.querySelectorAll(".numbers button")];
@@ -172,3 +182,6 @@ operatorButtons.forEach(button => button.addEventListener("click", operate));
 
 const clearButton = document.querySelector(".commands button");
 clearButton.addEventListener("click", clear);
+
+const backspaceButton = document.querySelector(".commands i");
+backspaceButton.addEventListener("click", backspace);
