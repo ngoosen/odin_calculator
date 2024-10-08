@@ -111,6 +111,10 @@ function enterNumber(e) {
   }
 
   if (!decimalEntered && (displayValue == 0 || displayValue === "" || operator === "=")) {
+    if (operator === "=") {
+      operator = "";
+    }
+
     displayValue = enteredValue;
   } else {
     displayValue += enteredValue;
