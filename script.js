@@ -12,6 +12,26 @@ function updateYear() {
   footer.append(" - " + new Date().getFullYear());
 }
 
+function updateDisplay() {
+  displayValue = displayValue.toString().substring(0, 15);
+
+  input.textContent = displayValue;
+  input.style.fontSize = "60px";
+
+  const divInput = document.querySelector("div.input");
+
+  const maxDivWidth = divInput.clientWidth - 20; //? - 20 for padding
+
+  let inputWidth = input.clientWidth;
+  let originalFontSize = 60;
+
+  while (inputWidth > maxDivWidth) {
+    originalFontSize -= 1;
+    input.style.fontSize = originalFontSize + "px";
+    inputWidth = input.clientWidth;
+  }
+}
+
 function clear() {
   displayValue = "0";
   number1 = "";
@@ -19,7 +39,7 @@ function clear() {
   operator = "";
   total = 0;
   decimalEntered = false;
-  input.textContent = displayValue;
+  updateDisplay();
 }
 
 function add(n1, n2) {
@@ -69,7 +89,7 @@ function enterNumber(e) {
 
       displayValue += enteredValue;
       decimalEntered = true;
-      input.textContent = displayValue;
+      updateDisplay();
     }
 
     return;
@@ -81,7 +101,7 @@ function enterNumber(e) {
     displayValue += enteredValue;
   }
 
-  input.textContent = displayValue;
+  updateDisplay();
 }
 
 function operate(e) {
@@ -109,7 +129,7 @@ function operate(e) {
 
     total = resolve(parseFloat(number1), parseFloat(number2));
     displayValue = total;
-    input.textContent = displayValue;
+    updateDisplay();
     number1 = "";
     number2 = "";
   } else {
