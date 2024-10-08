@@ -90,7 +90,11 @@ function resolve(n1, n2) {
 }
 
 function enterNumber(e) {
-  const enteredValue = e.target.textContent;
+  let enteredValue = e;
+
+  if (e.target && e.target.textContent) {
+    enteredValue = e.target.textContent;
+  }
 
   if (enteredValue === ".") {
     if (!decimalEntered) {
@@ -116,7 +120,12 @@ function enterNumber(e) {
 }
 
 function operate(e) {
-  const selectedOperator = e.target.textContent;
+  let selectedOperator = e;
+
+  if (e.target && e.target.textContent) {
+    selectedOperator = e.target.textContent;
+  }
+
   decimalEntered = false;
 
   if (number1 === "") {
@@ -172,6 +181,40 @@ function backspace() {
   updateDisplay();
 }
 
+const allowedKeys = ["Delete", "Backspace", "Enter", "/", "*", "-", "+", "=", ".", ","];
+
+function keyboardDispatch(event) {
+  const key = event.key;
+
+  if (!isNaN(parseInt(key))) {
+    enterNumber(event.key);
+  } else if (allowedKeys.includes(key)) {
+    switch (key) {
+      case "Backspace":
+        backspace();
+        break;
+      case ".":
+      case ",":
+        enterNumber(".");
+        break;
+      case "Enter":
+        operate("=");
+        break;
+      case "/":
+      case "*":
+      case "-":
+      case "+":
+      case "=":
+        operate(key);
+        break;
+      case "Delete":
+      default:
+        clear();
+        break;
+    }
+  }
+}
+
 updateYear();
 
 const numberButtons = [...document.querySelectorAll(".numbers button")];
@@ -185,3 +228,5 @@ clearButton.addEventListener("click", clear);
 
 const backspaceButton = document.querySelector(".commands i");
 backspaceButton.addEventListener("click", backspace);
+
+document.addEventListener("keydown", keyboardDispatch);
