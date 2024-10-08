@@ -12,8 +12,27 @@ function updateYear() {
   footer.append(" - " + new Date().getFullYear());
 }
 
+function clear() {
+  displayValue = "0";
+  number1 = "";
+  number2 = "";
+  operator = "";
+  total = 0;
+  decimalEntered = false;
+  updateDisplay();
+}
+
 function updateDisplay() {
-  displayValue = displayValue.toString().substring(0, 15);
+  if (displayValue.includes(".")) {
+    displayValue = displayValue.toString().substring(0, 15);
+  } else if (displayValue.length > 15) {
+    input.textContent = "Your number is too long.";
+    input.style.fontSize = "19px";
+    setTimeout(() => {
+      clear();
+    }, 2000);
+    return;
+  }
 
   input.textContent = displayValue;
   input.style.fontSize = "60px";
@@ -30,16 +49,6 @@ function updateDisplay() {
     input.style.fontSize = originalFontSize + "px";
     inputWidth = input.clientWidth;
   }
-}
-
-function clear() {
-  displayValue = "0";
-  number1 = "";
-  number2 = "";
-  operator = "";
-  total = 0;
-  decimalEntered = false;
-  updateDisplay();
 }
 
 function add(n1, n2) {
